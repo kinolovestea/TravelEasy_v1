@@ -8,6 +8,21 @@
 
 import Foundation
 
-enum AppError: Error {  //centralize error type for the app
-    case invalidInput
+// Centralized error type for the app
+enum AppError: LocalizedError, Identifiable {
+    var id: String { localizedDescription }
+
+    case invalidInput(String)
+    case noMatch
+    case dataUnavailable
+    case network(String)
+
+    var errorDescription: String? {
+        switch self {
+        case .invalidInput(let msg): return msg
+        case .noMatch: return "No perfect destination found."
+        case .dataUnavailable: return "Data not available."
+        case .network(let msg): return msg
+        }
+    }
 }

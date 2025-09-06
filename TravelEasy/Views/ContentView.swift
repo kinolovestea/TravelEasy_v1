@@ -7,21 +7,19 @@
 
 import SwiftUI
 
+
+// hosts NavigationStack and shows the first screen
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("TravelEasy")
+        NavigationStack {
+            LocationView()
         }
-        .padding()
     }
 }
 
 #Preview {
     ContentView()
+        .environment(RecommendationViewModel())
 }
-
 
 

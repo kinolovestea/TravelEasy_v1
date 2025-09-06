@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct TravelEasyApp: App {
+    @State private var vm = RecommendationViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(vm) // Inject ViewModel into environment
         }
     }
 }
+
