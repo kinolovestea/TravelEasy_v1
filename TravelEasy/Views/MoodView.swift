@@ -11,6 +11,8 @@ import SwiftUI
 // second screen to select mood
 struct MoodView: View {
     @Environment(RecommendationViewModel.self) private var vm
+    let onPick: (Mood) -> Void
+    let onAppearReset: () -> Void
 
     var body: some View {
         VStack(spacing: 16) {
@@ -33,12 +35,14 @@ struct MoodView: View {
         .padding()
         .navigationTitle(vm.prefs.origin)
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear { vm.resetToMood() }
     }
 
     @ViewBuilder
     private func moodTile(_ mood: Mood) -> some View {
-        NavigationLink {
-            DistanceView()
+        Button {
+            vm.prefs.mood = mood
+            onPick(mood)
         } label: {
             VStack(spacing: 6) {
                 Text(mood.emoji).font(.title3)
@@ -49,11 +53,6 @@ struct MoodView: View {
             .clipShape(RoundedRectangle(cornerRadius: 12))
         }
         .buttonStyle(.plain)
-        .simultaneousGesture(
-            TapGesture().onEnded {
-                vm.prefs.mood = mood
-            }
-        )
     }
 
 }

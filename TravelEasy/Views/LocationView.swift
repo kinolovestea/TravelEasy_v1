@@ -10,10 +10,12 @@ import SwiftUI
 // First screen
 // environment-injected RecommendationViewModel
 
-
 struct LocationView: View {
     @Environment(RecommendationViewModel.self) private var vm
     @State private var originText: String = ""
+
+    // let parent view (ContentView) decide how to proceed
+    let onNext: () -> Void
 
     var body: some View {
         VStack(spacing: 20) {
@@ -27,13 +29,11 @@ struct LocationView: View {
                 .padding(.horizontal)
                 .onAppear { originText = vm.prefs.origin }   // default “Sydney, Australia”
 
-            NavigationLink("Go!") {
-                MoodView()
+            Button("Go!") {
+                vm.prefs.origin = originText.trimmingCharacters(in: .whitespacesAndNewlines)
+                onNext()  // Let parent view drive the navigation to .mood
             }
             .buttonStyle(.borderedProminent)
-            .simultaneousGesture(TapGesture().onEnded {
-                vm.prefs.origin = originText.trimmingCharacters(in: .whitespacesAndNewlines)
-            })
 
             Spacer()
         }

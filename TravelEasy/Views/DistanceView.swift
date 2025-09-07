@@ -1,15 +1,18 @@
 //
-//  Untitled 2.swift
+//  DistanceView.swift
 //  TravelEasy
 //
 //  Created by Yu on 9/5/25.
 //
+
 
 import SwiftUI
 
 // third screen to select distance wanted
 struct DistanceView: View {
     @Environment(RecommendationViewModel.self) private var vm
+    let generateAndGo: () -> Void
+
     private let bands: [DistanceBand] = [.h1_2, .h3_5, .h5_plus]
 
     var body: some View {
@@ -18,8 +21,10 @@ struct DistanceView: View {
                 .font(.title3).bold()
 
             ForEach(bands, id: \.self) { band in
-                NavigationLink {
-                    RecommendationView()
+                Button {
+                    vm.prefs.distance = band
+                    vm.prefs.surprise = false
+                    generateAndGo()     //only jump to next page if matching data found
                 } label: {
                     Text(band.title)
                         .frame(maxWidth: .infinity)
@@ -28,19 +33,14 @@ struct DistanceView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
                 .buttonStyle(.plain)
-                .simultaneousGesture(
-                    TapGesture().onEnded {
-                        vm.prefs.distance = band
-                        vm.prefs.surprise = false
-                        vm.generateRecommendation()
-                    }
-                )
             }
 
             Spacer()
 
-            NavigationLink {
-                RecommendationView()
+            Button {
+                vm.prefs.surprise = true
+                vm.prefs.distance = nil
+                generateAndGo()
             } label: {
                 Text("Surprise me!")
                     .bold()
@@ -51,13 +51,17 @@ struct DistanceView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             .buttonStyle(.plain)
-            .simultaneousGesture(
-                TapGesture().onEnded {
-                    vm.prefs.surprise = true
-                    vm.generateRecommendation()
-                }
-            )
         }
         .padding()
+        
+        
+        // error handling: message pop up
+        .alert(item: Binding(get: { vm.error }, set: { _ in vm.error = nil })) { err in
+            Alert(
+                title: Text("Oops"),
+                message: Text(err.localizedDescription),
+                dismissButton: .default(Text("OK"))
+            )
+        }
     }
 }

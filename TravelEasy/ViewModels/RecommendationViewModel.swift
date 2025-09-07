@@ -28,7 +28,6 @@ class RecommendationViewModel {
     
     
     //generate a recommendation based on current preference
-    
     func generateRecommendation() {
         do {
             try prefs.validate()
@@ -42,12 +41,20 @@ class RecommendationViewModel {
         }
     }
     
+    
     func resetToMood() {
-            // keep origin and mood, re-choose distance
-            recommended = nil
-            prefs.surprise = false
-            prefs.distance = nil
-        }
+        recommended = nil
+        error = nil
+        prefs.distance = nil
+        prefs.surprise = false
+    }
+    
+    func resetAllKeepingOrigin() {
+        let origin = prefs.origin
+        recommended = nil
+        error = nil
+        prefs = TravelPreferences(origin: origin)
+    }
     
     
     //reset pref to start over

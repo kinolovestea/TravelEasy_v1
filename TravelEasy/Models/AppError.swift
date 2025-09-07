@@ -20,7 +20,7 @@ enum AppError: LocalizedError, Identifiable {
     var errorDescription: String? {
         switch self {
         case .invalidInput(let msg): return msg
-        case .noMatch: return "No perfect destination found."
+        case .noMatch: return "No matching destination found. Choose another option!"
         case .dataUnavailable: return "Data not available."
         case .network(let msg): return msg
         }

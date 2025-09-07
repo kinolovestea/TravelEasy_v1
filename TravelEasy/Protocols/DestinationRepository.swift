@@ -7,7 +7,6 @@
 
 
 // protocol for getting destination data
-
 protocol DestinationRepository {
     func allDestinations() -> [Destination]
 }
