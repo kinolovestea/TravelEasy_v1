@@ -9,11 +9,11 @@ import Observation
 import Foundation
 
 
-// main app viewModel
+// MVVM single source of truth for the flow
 
 @Observable
 class RecommendationViewModel {
-    var prefs = TravelPreferences()
+    var prefs = TravelPreferences(origin: "Sydney, Australia")
     var recommended: Destination?
     var error: AppError?
     
@@ -41,6 +41,13 @@ class RecommendationViewModel {
             self.error = .network(error.localizedDescription)
         }
     }
+    
+    func resetToMood() {
+            // keep origin and mood, re-choose distance
+            recommended = nil
+            prefs.surprise = false
+            prefs.distance = nil
+        }
     
     
     //reset pref to start over

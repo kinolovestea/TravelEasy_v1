@@ -8,7 +8,7 @@
 
 
 // multiple sample destinations
-// with switch to CoreData or cloud database in the next assignment
+// will switch to CoreData or cloud database in the next assignment
 
 struct LocalDestinationRepository: DestinationRepository {
     func allDestinations() -> [Destination] {

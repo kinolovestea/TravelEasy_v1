@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Centralized error type for the app
+// Error handling: centralized error type for the app
 enum AppError: LocalizedError, Identifiable {
     var id: String { localizedDescription }
 

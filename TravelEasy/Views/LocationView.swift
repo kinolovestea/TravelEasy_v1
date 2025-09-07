@@ -13,58 +13,35 @@ import SwiftUI
 
 struct LocationView: View {
     @Environment(RecommendationViewModel.self) private var vm
-    @State private var cityVM = CitySearchViewModel()
+    @State private var originText: String = ""
 
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 20) {
             Text("TravelEasy").font(.largeTitle).bold()
-            Text("Where do you live?").font(.title3)
 
-            // User input; MapKit autocomplete updates automatically.
-            TextField("Type your city (e.g. syd)", text: $cityVM.query)
+            Text("Where do you live?")
+                .font(.title3)
+
+            TextField("City, Country", text: $originText)
                 .textFieldStyle(.roundedBorder)
                 .padding(.horizontal)
+                .onAppear { originText = vm.prefs.origin }   // default “Sydney, Australia”
 
-            // suggestion list
-            List(cityVM.suggestions, id: \.title) { s in
-                Button {
-                    cityVM.pick(s)
-                } label: {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(s.title)
-                        if !s.subtitle.isEmpty {
-                            Text(s.subtitle)
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                }
+            NavigationLink("Go!") {
+                MoodView()
             }
-            .listStyle(.plain)
+            .buttonStyle(.borderedProminent)
+            .simultaneousGesture(TapGesture().onEnded {
+                vm.prefs.origin = originText.trimmingCharacters(in: .whitespacesAndNewlines)
+            })
 
-            // show the selected canonical string and proceed.
-            if let chosen = cityVM.selectedCity {
-                Text("Selected: \(chosen)")
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-
-                NavigationLink("GO!") {
-                    MoodView()
-                }
-                .simultaneousGesture(TapGesture().onEnded {
-                    vm.prefs.city = chosen
-                    vm.prefs.cityKey = cityVM.cityKey
-                })
-                .buttonStyle(.borderedProminent)
-            }
-
-            Spacer(minLength: 0)
+            Spacer()
         }
-        .alert(cityVM.errorMessage ?? "", isPresented: Binding(
-            get: { cityVM.errorMessage != nil },
-            set: { _ in cityVM.errorMessage = nil })
-        ) { Button("OK", role: .cancel) {} }
-        .navigationBarTitleDisplayMode(.inline)
+        .padding(.top, 32)
+        .alert(item: Binding(get: { vm.error }, set: { _ in vm.error = nil })) { err in
+            Alert(title: Text("Error"),
+                  message: Text(err.localizedDescription),
+                  dismissButton: .default(Text("OK")))
+        }
     }
 }
-

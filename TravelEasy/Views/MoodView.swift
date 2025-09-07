@@ -8,23 +8,53 @@
 
 import SwiftUI
 
-struct MoodView: View {  
+// second screen to select mood
+struct MoodView: View {
     @Environment(RecommendationViewModel.self) private var vm
-    
+
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Select your mood").font(.title2).bold()
-            ForEach(Mood.allCases, id: \.self) { mood in
-                Button(mood.rawValue.capitalized) {
-                    vm.prefs.mood = mood
+        VStack(spacing: 16) {
+            Text("What do you look for?")
+                .font(.title2).bold()
+
+            Grid(horizontalSpacing: 12, verticalSpacing: 12) {
+                GridRow {
+                    moodTile(.chill)
+                    moodTile(.adventurous)
                 }
-                .frame(maxWidth: .infinity, minHeight: 60)
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(12)
+                GridRow {
+                    moodTile(.peaceful)
+                    moodTile(.vibrant)
+                }
             }
-            NavigationLink("Next") { TravelPrefsView() }
-                .buttonStyle(.borderedProminent)
+
+            Spacer()
         }
         .padding()
+        .navigationTitle(vm.prefs.origin)
+        .navigationBarTitleDisplayMode(.inline)
     }
+
+    @ViewBuilder
+    private func moodTile(_ mood: Mood) -> some View {
+        NavigationLink {
+            DistanceView()
+        } label: {
+            VStack(spacing: 6) {
+                Text(mood.emoji).font(.title3)
+                Text(mood.title)
+            }
+            .frame(maxWidth: .infinity, minHeight: 90)
+            .background(Color(.systemGray6))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+        }
+        .buttonStyle(.plain)
+        .simultaneousGesture(
+            TapGesture().onEnded {
+                vm.prefs.mood = mood
+            }
+        )
+    }
+
 }
+

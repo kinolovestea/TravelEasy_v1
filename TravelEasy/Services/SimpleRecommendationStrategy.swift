@@ -8,14 +8,16 @@
 
 import Foundation
 
+
+// tiny testable stategy that matches mood and distance.
+// if surprise is on, distance is randomized but mood is kept
+
 struct SimpleRecommendationStrategy: RecommendationStrategy {
     func recommend(from pool: [Destination], prefs: TravelPreferences) throws -> Destination {
-        let filtered = pool.filter { d in
-            let tMatch = (prefs.transport == .any) || d.transportOptions.contains(prefs.transport)
-            if prefs.surprise { return tMatch }
-            return tMatch && d.bestFor.contains(prefs.mood!) && d.typicalBand == prefs.distance!
-        }
-        guard let pick = filtered.randomElement() ?? pool.randomElement() else {
+        let moodFiltered = prefs.mood.map { m in pool.filter { $0.bestFor.contains(m) } } ?? pool
+        let band: DistanceBand? = prefs.surprise ? [DistanceBand.h1_2, .h3_5, .h5_plus].randomElement() : prefs.distance
+        let final = band.map { b in moodFiltered.filter { $0.typicalBand == b } } ?? moodFiltered
+        guard let pick = final.randomElement() ?? pool.randomElement() else {
             throw AppError.noMatch
         }
         return pick
