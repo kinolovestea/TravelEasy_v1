@@ -7,7 +7,6 @@
 
 
 //protocol for validating inputs.
-
 protocol Validatable {
     func validate() throws
 }

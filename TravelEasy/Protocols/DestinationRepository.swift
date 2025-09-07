@@ -6,7 +6,6 @@
 //
 
 
-
 // protocol for getting destination data
 
 protocol DestinationRepository {

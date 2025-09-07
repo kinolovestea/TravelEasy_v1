@@ -6,10 +6,8 @@
 //
 
 
-
 // protocol for generating travel recommendations
 protocol RecommendationStrategy {
     func recommend(from pool: [Destination], prefs: TravelPreferences) throws -> Destination
 }
-
 
