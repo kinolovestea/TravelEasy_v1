@@ -10,12 +10,28 @@
 		FA2554352E6E9EB3001E89F9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FA2554342E6E9E9A001E89F9 /* README.md */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FA25543E2E6EB835001E89F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA73C5B72E6AD13500181D72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA73C5BE2E6AD13500181D72;
+			remoteInfo = TravelEasy;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		FA2554342E6E9E9A001E89F9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FA25543A2E6EB835001E89F9 /* TravelEasyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelEasyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA73C5BF2E6AD13500181D72 /* TravelEasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelEasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		FA25543B2E6EB835001E89F9 /* TravelEasyTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TravelEasyTests;
+			sourceTree = "<group>";
+		};
 		FA73C5C12E6AD13500181D72 /* TravelEasy */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = TravelEasy;
@@ -24,6 +40,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FA2554372E6EB835001E89F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA73C5BC2E6AD13500181D72 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -39,6 +62,7 @@
 			children = (
 				FA2554342E6E9E9A001E89F9 /* README.md */,
 				FA73C5C12E6AD13500181D72 /* TravelEasy */,
+				FA25543B2E6EB835001E89F9 /* TravelEasyTests */,
 				FA73C5C02E6AD13500181D72 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				FA73C5BF2E6AD13500181D72 /* TravelEasy.app */,
+				FA25543A2E6EB835001E89F9 /* TravelEasyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,6 +79,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		FA2554392E6EB835001E89F9 /* TravelEasyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA2554402E6EB835001E89F9 /* Build configuration list for PBXNativeTarget "TravelEasyTests" */;
+			buildPhases = (
+				FA2554362E6EB835001E89F9 /* Sources */,
+				FA2554372E6EB835001E89F9 /* Frameworks */,
+				FA2554382E6EB835001E89F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA25543F2E6EB835001E89F9 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FA25543B2E6EB835001E89F9 /* TravelEasyTests */,
+			);
+			name = TravelEasyTests;
+			packageProductDependencies = (
+			);
+			productName = TravelEasyTests;
+			productReference = FA25543A2E6EB835001E89F9 /* TravelEasyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		FA73C5BE2E6AD13500181D72 /* TravelEasy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA73C5CA2E6AD13600181D72 /* Build configuration list for PBXNativeTarget "TravelEasy" */;
@@ -86,6 +134,10 @@
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
+					FA2554392E6EB835001E89F9 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = FA73C5BE2E6AD13500181D72;
+					};
 					FA73C5BE2E6AD13500181D72 = {
 						CreatedOnToolsVersion = 16.4;
 					};
@@ -106,11 +158,19 @@
 			projectRoot = "";
 			targets = (
 				FA73C5BE2E6AD13500181D72 /* TravelEasy */,
+				FA2554392E6EB835001E89F9 /* TravelEasyTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FA2554382E6EB835001E89F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA73C5BD2E6AD13500181D72 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -122,6 +182,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FA2554362E6EB835001E89F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA73C5BB2E6AD13500181D72 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -131,7 +198,49 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		FA25543F2E6EB835001E89F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA73C5BE2E6AD13500181D72 /* TravelEasy */;
+			targetProxy = FA25543E2E6EB835001E89F9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		FA2554412E6EB835001E89F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yuxiao.TravelEasyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TravelEasy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TravelEasy";
+			};
+			name = Debug;
+		};
+		FA2554422E6EB835001E89F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yuxiao.TravelEasyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TravelEasy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TravelEasy";
+			};
+			name = Release;
+		};
 		FA73C5C82E6AD13600181D72 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -310,6 +419,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FA2554402E6EB835001E89F9 /* Build configuration list for PBXNativeTarget "TravelEasyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA2554412E6EB835001E89F9 /* Debug */,
+				FA2554422E6EB835001E89F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FA73C5BA2E6AD13500181D72 /* Build configuration list for PBXProject "TravelEasy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

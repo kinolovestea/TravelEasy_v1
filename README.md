@@ -66,9 +66,10 @@ An easy-to-use travel decision app that suggests destination taylored for you!
 
 
 ## Future Work
-- Integrate Weather API (placeholder in `RecommendationView`)
+- Integrate Weather API (placeholder in `RecommendationView`) shown on the detail page
 - Replace local repository with CoreData or CloudKit backend
-- City autocomplete with Apple MapKit tool
+- Dynamic origin and calculation: allow users to enter any departure city (via MapKit or CoreLocation geocoding),
+  compute real flight distances to destinations using coordinates and map them into time bands
 - Add Saved Destinations feature (favorites)
 - Support multi-user data sync
 - Support more language
