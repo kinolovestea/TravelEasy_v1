@@ -35,7 +35,7 @@ struct MoodView: View {
         .padding()
         .navigationTitle(vm.prefs.origin)
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear { vm.resetToMood() }
+        .onAppear { vm.resetForEnteringMood() }
     }
 
     @ViewBuilder

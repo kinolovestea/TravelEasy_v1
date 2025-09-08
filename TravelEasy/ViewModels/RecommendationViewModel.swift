@@ -9,7 +9,10 @@ import Observation
 import Foundation
 
 
-// MVVM single source of truth for the flow
+// ViewModel in MVVM: Single source of truth for the app’s recommendation flow
+// Talks to Repository and Strategy
+// Use @Observable so Views can automatically update when state changes
+
 
 @Observable
 class RecommendationViewModel {
@@ -17,6 +20,8 @@ class RecommendationViewModel {
     var recommended: Destination?
     var error: AppError?
     
+    // Repository (data): follows the DestinationRepository protocol
+    // Strategy (algorithm): follows the RecommendationStrategy protocol
     private let repo: DestinationRepository
     private let strategy: RecommendationStrategy
     
@@ -41,14 +46,16 @@ class RecommendationViewModel {
         }
     }
     
-    
-    func resetToMood() {
+    // go back to mood page with previous selected cleared
+    func resetForEnteringMood() {
         recommended = nil
         error = nil
+        prefs.mood = nil
         prefs.distance = nil
         prefs.surprise = false
     }
     
+    // reserved for future extension
     func resetAllKeepingOrigin() {
         let origin = prefs.origin
         recommended = nil
@@ -56,11 +63,10 @@ class RecommendationViewModel {
         prefs = TravelPreferences(origin: origin)
     }
     
-    
-    //reset pref to start over
+    // reserved for future extension
     func reset() {
         recommended = nil
         prefs = TravelPreferences()
     }
-    
 }
+

@@ -21,7 +21,7 @@ struct ContentView: View {
                     case .mood:
                         MoodView(
                             onPick: { _ in path.append(.distance) },
-                            onAppearReset: { vm.resetToMood() }
+                            onAppearReset: { vm.resetForEnteringMood() }   // always enter Mood fresh
                         )
                     case .distance:
                         DistanceView(generateAndGo: {
@@ -30,7 +30,7 @@ struct ContentView: View {
                         })
                     case .recommendation:
                         RecommendationView(tryAnother: {
-                            vm.resetToMood()
+                            vm.resetForEnteringMood()
                             path = [.mood]
                         })
                     }

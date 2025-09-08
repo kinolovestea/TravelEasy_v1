@@ -16,10 +16,17 @@ struct TravelPreferences: Codable {
     var surprise: Bool = false
     var transport: Transport = .plane
 
+    
+    // validate user pref before generating recommendation
     func validate() throws {
-        if origin.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            throw AppError.invalidInput("Please enter your current city.")
+        let trimmed = origin.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        // Origin city cannot be empty or numeric only
+        if trimmed.isEmpty || CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: trimmed)) {
+            throw AppError.invalidInput("Please enter a valid city name.")
         }
+
+        // Fallback plan
         if !surprise && (mood == nil || distance == nil) {
             throw AppError.invalidInput("Please choose your mood and distance, or tap Surprise me.")
         }
@@ -27,7 +34,7 @@ struct TravelPreferences: Codable {
 }
 
 
-// user mood catogories
+// Mood categories
 enum Mood: String, CaseIterable, Codable {
     case chill, adventurous, peaceful, vibrant
     var title: String { rawValue.capitalized }
@@ -41,8 +48,7 @@ enum Mood: String, CaseIterable, Codable {
     }
 }
 
-
-// travel distance range
+// Travel distance range
 enum DistanceBand: String, CaseIterable, Codable {
     case h1_2, h3_5, h5_plus
     var title: String {
@@ -54,9 +60,9 @@ enum DistanceBand: String, CaseIterable, Codable {
     }
 }
 
-
-// transport methods
+// Transport methods
 enum Transport: String, CaseIterable, Codable {
     case plane, train, any
 }
+
 

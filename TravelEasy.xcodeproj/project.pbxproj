@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FA2554352E6E9EB3001E89F9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FA2554342E6E9E9A001E89F9 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		FA2554342E6E9E9A001E89F9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FA73C5BF2E6AD13500181D72 /* TravelEasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelEasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -32,6 +37,7 @@
 		FA73C5B62E6AD13500181D72 = {
 			isa = PBXGroup;
 			children = (
+				FA2554342E6E9E9A001E89F9 /* README.md */,
 				FA73C5C12E6AD13500181D72 /* TravelEasy */,
 				FA73C5C02E6AD13500181D72 /* Products */,
 			);
@@ -109,6 +115,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2554352E6E9EB3001E89F9 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
