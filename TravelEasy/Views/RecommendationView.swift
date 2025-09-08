@@ -35,7 +35,7 @@ struct RecommendationView: View {
                 .background(Color.pink.opacity(0.12))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
 
-                // weather not shown right now, will add weather api in the next assignment
+                // weather not shown right now, will add weather api in future dev
                 
                 
                 Button("Try Another 🔄") {

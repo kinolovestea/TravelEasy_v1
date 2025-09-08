@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var path: [Screen] = [.location]
+    @State private var path: [Screen] = []
     @Environment(RecommendationViewModel.self) private var vm
 
     var body: some View {
@@ -21,7 +21,8 @@ struct ContentView: View {
                     case .mood:
                         MoodView(
                             onPick: { _ in path.append(.distance) },
-                            onAppearReset: { vm.resetForEnteringMood() }   // always enter Mood fresh
+                            // always enter Mood fresh
+                            onAppearReset: { vm.resetForEnteringMood() }
                         )
                     case .distance:
                         DistanceView(generateAndGo: {

@@ -6,7 +6,7 @@
 //
 
 
-// protocol for getting destination data
+// protocol for reading destination data (data source layer)
 protocol DestinationRepository {
     func allDestinations() -> [Destination]
 }

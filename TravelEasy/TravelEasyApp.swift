@@ -14,7 +14,7 @@ struct TravelEasyApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(vm) // Inject ViewModel into environment
+                .environment(vm)
         }
     }
 }

@@ -16,6 +16,8 @@ struct LocalDestinationRepository: DestinationRepository {
             Destination(name: "Cairns", country: "Australia",
                         typicalBand: .h1_2, bestFor: [.chill],
                         activities: ["Great Barrier Reef", "Waterfall hiking", "Surfing"],
+                        // Weather data is placeholder for now
+                        // Will replace with live Weather API in the future
                         avgTempC: 27, weatherEmoji: "☀️",
                         transportOptions: [.plane]),
             
@@ -71,7 +73,14 @@ struct LocalDestinationRepository: DestinationRepository {
                         typicalBand: .h5_plus, bestFor: [.vibrant],
                         activities: ["Eiffel Tower", "Louvre Museum", "Seine River cruise"],
                         avgTempC: 17, weatherEmoji: "☁️",
+                        transportOptions: [.plane]),
+            
+            Destination(name: "Machu Picchu", country: "Peru",
+                        typicalBand: .h5_plus, bestFor: [.adventurous],
+                        activities: ["Inca Trail", "Ancient ruins", "Sacred Valley"],
+                        avgTempC: 12, weatherEmoji: "🌤️",
                         transportOptions: [.plane])
+            
         ]
     }
 }
